@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Account_Setting/Account_Setting.dart';
 
 class RoundedText extends StatelessWidget {
   final String tx;
@@ -259,17 +260,20 @@ class RoundedText4 extends StatelessWidget {
                   ],
                 ),
               ),
-              new Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    new Icon(Icons.account_box),
-                    SizedBox(width: 20,),
-                    new Text("Pengaturan Akun"),
-                    SizedBox(width: 100,),
-                    new Icon(Icons.arrow_right)
-                  ],
-                ),
+              GestureDetector(
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return AccountSettingScreen();},),);},
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        new Icon(Icons.account_box),
+                        SizedBox(width: 20,),
+                        new Text("Pengaturan Akun"),
+                        SizedBox(width: 100,),
+                        new Icon(Icons.arrow_right)
+                      ],
+                    ),
+                  ),
               ),
               new Container(
                 child: Row(
