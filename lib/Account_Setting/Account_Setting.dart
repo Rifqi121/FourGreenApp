@@ -18,6 +18,7 @@ class AccountSettingScreen extends StatelessWidget {
           child: Column(children: <Widget>[
             ProfileCard(),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,6 +31,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,6 +44,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ), 
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,6 +57,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,6 +70,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,6 +83,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,6 +96,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,6 +109,7 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
             new Container(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white30))),
               margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
