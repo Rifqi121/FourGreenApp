@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Account_Setting/components/profile_card.dart';
+import 'package:fourgreen/Privacy/privacy.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class AccountSettingScreen extends StatelessWidget {
@@ -91,7 +92,7 @@ class AccountSettingScreen extends StatelessWidget {
                     new Icon(Icons.verified_user_outlined, color: Colors.white),
                     new Text("Privasi dan Keamanan", style: TextStyle(color: Colors.white)),
                     SizedBox(width: size.width*0.001),
-                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: null)
+                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return Privacy();},),);},)
                   ],
                 ),
               ),

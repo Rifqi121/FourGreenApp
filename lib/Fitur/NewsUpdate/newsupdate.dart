@@ -115,15 +115,21 @@ class _NewsUpdateState extends State<NewsUpdate> {
               child: TabBar(tabs: myTabs),
             ),
             Container(
-              height: 250,
-              width: double.infinity,
-              child: TabBarView(
-                children: containers,
+                height: 250,
+                width: double.infinity,
+                
+                child: TabBarView(
+                  children: containers,
+                ),
+                
               ),
-            ),
-            Container(
-              height: 20,
-              color: Colors.grey,
+
+            Card(
+              elevation: 15,
+              color: Colors.transparent,
+              child: Container(
+                height: 10,
+              ),
             ),
             Container(
               child: Column(

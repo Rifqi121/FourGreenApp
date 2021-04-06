@@ -15,11 +15,6 @@ class CommunityCard extends StatelessWidget {
         margin: EdgeInsets.all(8),
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(50),
-            splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-            },
             child: Container(
               padding: EdgeInsets.all(10),
               width: size.width*0.25,
@@ -27,8 +22,7 @@ class CommunityCard extends StatelessWidget {
               child: icon,
             ),
           ),
-        ),  
-      ), 
+        ),   
     );
   }
 }
