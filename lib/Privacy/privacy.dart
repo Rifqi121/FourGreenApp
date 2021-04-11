@@ -5,6 +5,18 @@ import 'package:provider/provider.dart';
 import 'package:fourgreen/Privacy/components/notofiers.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
+void main() {
+  runApp(MultiProvider(
+   providers: [
+    ChangeNotifierProvider<SingleNotifierPrivacy>(create: (_) =>SingleNotifierPrivacy()),
+    ChangeNotifierProvider<SingleNotifierInfo>(create: (_) =>SingleNotifierInfo()),
+    ChangeNotifierProvider<SingleNotifierStatus>(create: (_) =>SingleNotifierStatus()),
+    ChangeNotifierProvider<SingleNotifierForum>(create: (_) =>SingleNotifierForum()),
+    ChangeNotifierProvider<SingleNotifierClub>(create: (_) =>SingleNotifierClub()),
+   ],
+  ));
+}
+
 class Privacy extends StatefulWidget {
   @override
   _PrivacyState createState() => _PrivacyState();
@@ -134,7 +146,7 @@ class _PrivacyState extends State<Privacy>{
   }
 
   _showSingleChoiceDialog(BuildContext context) => showDialog(context: context, builder: (context){
-    final _singleNotifier = Provider.of<SingleNotifier>(context);
+    final _singleNotifier = Provider.of<SingleNotifierPrivacy>(context);
     return AlertDialog(
       content: SingleChildScrollView(
         child: Container(

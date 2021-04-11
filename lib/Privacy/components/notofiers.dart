@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fourgreen/Privacy/components/singleRadioButton.dart';
 
-class SingleNotifier extends ChangeNotifier{
+class SingleNotifierPrivacy extends ChangeNotifier{
   String _currentFoto = foto[0];
-  SingleNotifier();
+  SingleNotifierPrivacy();
 
   String get currentFoto => _currentFoto;
 

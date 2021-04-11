@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:fourgreen/ClubFourgreen/clubfourgreen.dart';
+import 'package:fourgreen/FourgreenForum/fourgreenforum.dart';
 import 'package:fourgreen/components/community_card.dart';
 import 'package:fourgreen/components/rounded_search_field.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -97,13 +98,16 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     ],
                     ),
                   ),
-                  Column(
-                    children: <Widget>[
-                    CommunityCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                  GestureDetector(
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ForumScreen();},),);},
+                    child: Column(
+                      children: <Widget>[
+                      CommunityCard(
+                      icon: Image.asset("assets/icon/logo4green.png"),
+                      ),
+                      Text("FORUM", style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold))
+                    ],
                     ),
-                    Text("FORUM", style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold))
-                  ],
                   ),
                   ],
                   ),
@@ -152,7 +156,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child:Card(
                     elevation: 5,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ForumScreen();},),);},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[

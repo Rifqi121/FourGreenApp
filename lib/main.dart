@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Fitur/Search/search.dart';
 import 'package:fourgreen/welcome/splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+
+import 'Notifikasi_Setting/components/notifiers.dart';
+import 'Privacy/components/notofiers.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+   providers: [
+    ChangeNotifierProvider<SingleNotifier>(create: (_) => SingleNotifier()),
+    ChangeNotifierProvider<SingleNotifierGetar>(create: (_) => SingleNotifierGetar()),
+    ChangeNotifierProvider<SingleNotifierPop>(create: (_) => SingleNotifierPop()),
+    ChangeNotifierProvider<SingleNotifierTerang>(create: (_) => SingleNotifierTerang()),
+    ChangeNotifierProvider<SingleNotifierPrivacy>(create: (_) =>SingleNotifierPrivacy()),
+    ChangeNotifierProvider<SingleNotifierInfo>(create: (_) =>SingleNotifierInfo()),
+    ChangeNotifierProvider<SingleNotifierStatus>(create: (_) =>SingleNotifierStatus()),
+    ChangeNotifierProvider<SingleNotifierForum>(create: (_) =>SingleNotifierForum()),
+    ChangeNotifierProvider<SingleNotifierClub>(create: (_) =>SingleNotifierClub()),
+   ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

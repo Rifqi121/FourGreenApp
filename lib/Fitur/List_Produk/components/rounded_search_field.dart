@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fourgreen/Fitur/NewsUpdate/components/text_field_container.dart';
-import 'package:fourgreen/Fitur/Search/search.dart';
+import 'package:fourgreen/Fitur/List_Produk/components/text_field_container.dart';
 
 class RoundedSearchField extends StatelessWidget {
   final String hintText;
@@ -17,16 +16,14 @@ class RoundedSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SearchFieldContainer(
       child: TextField(
-        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return SearchPage();},),);},
-          onChanged: onChanged,
-          readOnly: true,
+        onChanged: onChanged,
         cursorColor: Colors.greenAccent,
         decoration: InputDecoration(
           icon: Icon(
             icon,
             color: Colors.grey,
           ),
-          hintText: "Fourgreen Company",
+          hintText: hintText,
           border: InputBorder.none,
         ),
       ),

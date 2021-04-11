@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Account_Setting/components/profile_card.dart';
+import 'package:fourgreen/Notifikasi_Setting/Notifikasi_Setting.dart';
 import 'package:fourgreen/Privacy/privacy.dart';
+import 'package:fourgreen/Verifikasi_2Langkah/verifikasidualangkah.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class AccountSettingScreen extends StatelessWidget {
@@ -79,7 +81,7 @@ class AccountSettingScreen extends StatelessWidget {
                     new Icon(Icons.music_note_outlined, color: Colors.white),
                     new Text("Pengturan Notifikasi", style: TextStyle(color: Colors.white)),
                     SizedBox(width: size.width*0.01),
-                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: null)
+                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return PengaturanNotifikasi();},),);},)
                   ],
                 ),
               ),
@@ -105,7 +107,7 @@ class AccountSettingScreen extends StatelessWidget {
                     new Icon(Icons.library_add_check_outlined, color: Colors.white),
                     new Text("Verifikasi dua langkah", style: TextStyle(color: Colors.white)),
                     SizedBox(width: size.width*0.001),
-                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: null)
+                    new IconButton(icon: Icon(Icons.arrow_right, color: Colors.white), onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return VerifikasiDuaLangkah();},),);},)
                   ],
                 ),
               ),

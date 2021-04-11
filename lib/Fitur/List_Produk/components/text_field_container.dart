@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fourgreen/Fitur/Search/search.dart';
 
 class TextFieldContainer extends StatelessWidget {
   final Widget child;
@@ -36,9 +35,9 @@ class RTextFieldContainer extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
       width: size.width * 0.8,
-      height: size.height*0.05,
+      height: size.height * 0.05,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -58,19 +57,16 @@ class SearchFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return GestureDetector(
-        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return SearchPage();},),);},
-        child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8),
-        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 2),
-        width: size.width * 0.65,
-        height: size.height*0.03,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: child,
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+      width: size.width * 0.65,
+      height: size.height * 0.03,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
       ),
+      child: child,
     );
   }
 }
