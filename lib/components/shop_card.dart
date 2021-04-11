@@ -29,7 +29,7 @@ class ShopCard extends StatelessWidget {
                     children: [
                       Icon(Icons.location_on),
                       Text("Temukan di FOURGREEN Shop", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                      Padding(padding: EdgeInsets.only(left: 65)),
+                      Padding(padding: EdgeInsets.only(left: size.width*0.15)),
                       Text("UBAH", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                     ],),
                 ),
@@ -40,28 +40,28 @@ class ShopCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(left: 30, right: 30),
+                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
-                          Image.asset("assets/icon/bibit.png", height: 40, width: 40,),
+                          Image.asset("assets/icon/bibit.png", height: size.height*0.05, width: size.width*0.08,),
                           Text("Bibit", style: TextStyle(fontSize: 12))
                           ],
                         ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 30, right: 30),
+                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
-                          Image.asset("assets/icon/nutrisi.png", height: 40, width: 40,),
+                          Image.asset("assets/icon/nutrisi.png", height: size.height*0.05, width: size.width*0.08,),
                           Text("Nutrisi", style: TextStyle(fontSize: 12))
                           ],
                         ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 30, right: 30),
+                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
-                          Image.asset("assets/icon/plant.png", height: 40, width: 40,),
+                          Image.asset("assets/icon/plant.png", height: size.height*0.05, width: size.width*0.08,),
                           Text("Tanaman", style: TextStyle(fontSize: 12))
                           ],
                         ),
