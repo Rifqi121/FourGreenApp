@@ -3,18 +3,21 @@ import 'package:fourgreen/components/text_field_container.dart';
 import 'package:fourgreen/contstant.dart';
 
 class RoundedPasswordField extends StatelessWidget {
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String> onSaved;
+  final ValueChanged<String> validator;
   const RoundedPasswordField({
     Key key,
-    this.onChanged,
+    this.validator,
+    this.onSaved,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         obscureText: true,
-        onChanged: onChanged,
+        onSaved: onSaved,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
           hintText: "Password",
@@ -35,8 +38,10 @@ class RoundedPasswordField extends StatelessWidget {
 
 class RRoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
+  final TextEditingController controller;
   const RRoundedPasswordField({
     Key key,
+    this.controller,
     this.onChanged,
   }) : super(key: key);
 
@@ -44,6 +49,7 @@ class RRoundedPasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return RTextFieldContainer(
       child: TextField(
+        controller: controller,
         obscureText: true,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,

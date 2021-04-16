@@ -4,19 +4,22 @@ import 'package:fourgreen/components/text_field_container.dart';
 class RoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String> onSaved;
+  final ValueChanged<String> validator;
   const RoundedInputField({
     Key key,
     this.hintText,
+    this.validator,
     this.icon = Icons.person,
-    this.onChanged,
+    this.onSaved,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
-        onChanged: onChanged,
+      child: TextFormField(
+        validator: validator,
+        onSaved: onSaved,
         cursorColor: Colors.greenAccent,
         decoration: InputDecoration(
           icon: Icon(

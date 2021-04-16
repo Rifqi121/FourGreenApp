@@ -1,9 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fourgreen/components/profile_setting.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget{
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
             children: <Widget>[
             new Container(
               margin: EdgeInsets.only(right: 125,top: 10),
-              child: Text("YatiaNurdani", style: TextStyle(fontSize: 15, color: Colors.white),),
+              child: Text('', style: TextStyle(fontSize: 15, color: Colors.white),),
               ),
               RoundedText2(),
               new Container(

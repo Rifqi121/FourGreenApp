@@ -4,9 +4,11 @@ import 'package:fourgreen/components/text_field_container.dart';
 class RRoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
+  final TextEditingController controller;
   final ValueChanged<String> onChanged;
   const RRoundedInputField({
     Key key,
+    this.controller,
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
@@ -16,6 +18,7 @@ class RRoundedInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return RTextFieldContainer(
       child: TextField(
+        controller: controller,
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
@@ -30,9 +33,11 @@ class RRoundedInputField extends StatelessWidget {
 class RoundedNumInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
+  final TextEditingController controller;
   final ValueChanged<String> onChanged;
   const RoundedNumInputField({
     Key key,
+    this.controller,
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
@@ -42,6 +47,7 @@ class RoundedNumInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return RTextFieldContainer(
       child: TextField(
+        controller: controller,
         onChanged: onChanged,
         keyboardType: TextInputType.number,
         cursorColor: Colors.black,
