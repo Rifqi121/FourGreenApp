@@ -4,7 +4,7 @@ import 'package:fourgreen/ClubFourgreen/components/club_card.dart';
 Icon iconb = new Icon(Icons.arrow_back);
 Icon icons = new Icon(Icons.search);
 
-class ClubFourgreen_layout extends StatelessWidget {
+class ClubFourgreenlayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,27 +17,27 @@ class ClubFourgreen_layout extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Club_Card(
+            ClubCard(
               judul: 'GreenLight Jakarta',
               topics: '128 Topics',
               members: '4k Members',
             ),
-            Club_Card(
+            ClubCard(
               judul: 'GreenLight Bekasi',
               topics: '28 Topics',
               members: '12k Members',
             ),
-            Club_Card(
+            ClubCard(
               judul: 'GreenLight Aceh',
               topics: '9999 Topics',
               members: '400k Members',
             ),
-            Club_Card(
+            ClubCard(
               judul: 'GreenLight Aceh',
               topics: '9999 Topics',
               members: '400k Members',
             ),
-            Club_Card(
+            ClubCard(
               judul: 'GreenLight Aceh',
               topics: '9999 Topics',
               members: '400k Members',

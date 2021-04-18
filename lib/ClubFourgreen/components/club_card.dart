@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Club_Card extends StatelessWidget {
+class ClubCard extends StatelessWidget {
   final String judul;
   final String topics;
   final String members;
 
-  const Club_Card({
+  const ClubCard({
     Key key,
     this.judul,
     this.topics,

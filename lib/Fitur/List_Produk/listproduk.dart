@@ -160,7 +160,7 @@ class _ListProdukState extends State<ListProduk> {
               DetailToko(),
               Container(
                 color: Colors.grey[400],
-                child: Group_Product_Card(),
+                child: GroupProductCard(),
               ),
             ],
           ),

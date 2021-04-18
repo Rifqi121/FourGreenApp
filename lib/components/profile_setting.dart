@@ -331,7 +331,8 @@ class RoundedTextLogout extends StatelessWidget {
       ),
       child: Center(
         child: FlatButton(
-          onPressed: null,
+          onPressed: (){Navigator.pushReplacementNamed(context, "/logout");
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

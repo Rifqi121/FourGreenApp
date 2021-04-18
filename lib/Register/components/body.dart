@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/Login/login_screen.dart';
 import 'package:fourgreen/Register/components/background.dart';
-import 'package:fourgreen/Register/register_screen.dart';
+import 'package:fourgreen/components/errorDialog.dart';
 import 'package:fourgreen/components/rounded_button.dart';
-import 'package:fourgreen/components/rounded_input_field.dart';
 import 'package:fourgreen/components/rounded_password_field.dart';
 import 'package:fourgreen/components/rounded_register_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -49,12 +49,10 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
             RegisRoundedButton(
               text: "LOGIN",
-              press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return LoginScreen();},),);},
-            ),
+              press: () {Navigator.pushReplacementNamed(context, "/login",);}),
             LoginRoundedButton(
               text: "REGISTER",
-              press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return RegisterScreen();},),);},
-            )
+              press: () {Navigator.pushReplacementNamed(context, "/register",);}),
             ],
             ),
             Form(
@@ -69,7 +67,12 @@ class _RegisterState extends State<Register> {
                   RRoundedInputField(
                     controller: _nameTextEditingController,
                     hintText: "Name",
-                    onChanged: (value) {},
+                    onChanged: (input) {},
+                    validator: (input) {
+                      if (input.isEmpty) {
+                        return "Masukan Nama";
+                      }
+                    },
                   ),
                   Align(
                     alignment: Alignment.topLeft,
@@ -78,8 +81,13 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(color: Colors.white)),),),
                   RRoundedInputField(
                     controller: _emailTextEditingController,
+                    validator: (input) {
+                      if (input.isEmpty) {
+                        return "Masukan E-mail";
+                      }
+                    },
                     hintText: "E-mail",
-                    onChanged: (value) {},
+                    onChanged: (input) {},
                   ),
                   Align(
                     alignment: Alignment.topLeft,
@@ -88,7 +96,13 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(color: Colors.white)),),),
                   RRoundedPasswordField(
                     controller: _passwordTextEditingController,
-                    onChanged: (value) {},
+                    maxlenght: 8,
+                    onChanged: (input) {},
+                    validator: (input) {
+                      if (input.isEmpty) {
+                        return "Masukan Password";
+                      }
+                    },
                   ),
                   Align(
                     alignment: Alignment.topLeft,
@@ -98,7 +112,12 @@ class _RegisterState extends State<Register> {
                   RoundedNumInputField(
                     controller: _phoneTextEditingController,
                     hintText: "Telepon",
-                    onChanged: (value) {},
+                    onChanged: (input) {},
+                    validator: (input) {
+                      if (input.isEmpty) {
+                        return "Masukan No Telepon";
+                      }
+                    },
                   ),
                 ],
               ),
@@ -109,22 +128,12 @@ class _RegisterState extends State<Register> {
             SizedBox(height: size.height * 0.01),
             Text("Term Of Service and Privacy Policy", 
             style: TextStyle(color: Colors.redAccent),),
-            SizedBox(height: size.height * 0.02),
+            SizedBox(height: size.height * 0.01),
             RoundedButton(
               text: "Register",
               press: _registerUser,
             ),
-            SizedBox(height: size.height * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Forgot Password?", 
-                  style: TextStyle(color: Colors.white, fontSize: 16),),
-                Text(" CLICK HERE", 
-                  style: TextStyle(color: Colors.indigo, fontSize: 12, decoration: TextDecoration.underline)),
-              ]
-            ),
-            SizedBox(height: size.height * 0.09),
+            SizedBox(height: size.height * 0.05),
           ],
         ),
       ),
@@ -135,16 +144,19 @@ class _RegisterState extends State<Register> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   void _registerUser() async {
     FirebaseUser firebaseUser;
-
-    await _auth.createUserWithEmailAndPassword(email: _emailTextEditingController.text.trim(), password: _passwordTextEditingController.text.trim()).then((auth) {
-      firebaseUser = auth.user;
-    }).catchError((error){
+    final formState = _formKey.currentState;
+    if(formState.validate()){
+    formState.save();
+    await _auth.createUserWithEmailAndPassword(
+      email: _emailTextEditingController.text.trim(), 
+      password: _passwordTextEditingController.text.trim()).then((auth) {
+      firebaseUser = auth.user;}).catchError((error){
       Navigator.pop(context);
       showDialog(
         context: context,
         builder:  (c)
         {
-          ;
+          return ErrorAlertDialog(message: "Silahkan masukan data dengan benar");
         }
         );
     });
@@ -157,6 +169,7 @@ class _RegisterState extends State<Register> {
       });
     }
   }
+  }
 
   Future saveUserIntoFireStore(FirebaseUser user) async {
   Firestore.instance.collection("users").document(user.uid).setData({
@@ -166,6 +179,12 @@ class _RegisterState extends State<Register> {
     "name": _nameTextEditingController.text.trim(),
     "phone": _phoneTextEditingController.text.trim()
   });
+
+  await FourgreenApp.sharedPreferences.setString("uid", user.uid);
+  await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, user.email);
+  await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, _nameTextEditingController.text.trim());
+  await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, _phoneTextEditingController.text.trim());
+
   }
 
 }

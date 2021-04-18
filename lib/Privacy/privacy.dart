@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fourgreen/Privacy/components/singleRadioButton.dart';
 import 'package:provider/provider.dart';
 import 'package:fourgreen/Privacy/components/notofiers.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 void main() {
   runApp(MultiProvider(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Fitur/List_Produk/components/product_card.dart';
 
-class Group_Product_Card extends StatelessWidget {
+class GroupProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -9,7 +9,7 @@ class Group_Product_Card extends StatelessWidget {
         children: [
           Row(
             children: [
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 1) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp3.000',
@@ -18,7 +18,7 @@ class Group_Product_Card extends StatelessWidget {
                 rating: '720 Terjual',
                 lokasi: 'Kab. Bandung',
               ),
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 10) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp30.000',
@@ -31,7 +31,7 @@ class Group_Product_Card extends StatelessWidget {
           ),
           Row(
             children: [
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 1) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp3.000',
@@ -40,7 +40,7 @@ class Group_Product_Card extends StatelessWidget {
                 rating: '720 Terjual',
                 lokasi: 'Kab. Bandung',
               ),
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 10) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp30.000',
@@ -53,7 +53,7 @@ class Group_Product_Card extends StatelessWidget {
           ),
           Row(
             children: [
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 1) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp3.000',
@@ -62,7 +62,7 @@ class Group_Product_Card extends StatelessWidget {
                 rating: '720 Terjual',
                 lokasi: 'Kab. Bandung',
               ),
-              Product_Card(
+              ProductCard(
                 judulp:
                     '(BUY 1 GET 10) Vitamin Hidroponik uk.50ML NEZAFARMER Original Free Ongkir',
                 diskon: 'Pilih 5 Diskon Rp30.000',

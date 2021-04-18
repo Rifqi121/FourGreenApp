@@ -1,13 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fourgreen/Fitur/Search/search.dart';
+import 'package:fourgreen/Config/config.dart';
+import 'package:fourgreen/Login/login_screen.dart';
+import 'package:fourgreen/Register/register_screen.dart';
 import 'package:fourgreen/welcome/splash_screen.dart';
+import 'package:fourgreen/welcome/welcome_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Notifikasi_Setting/components/notifiers.dart';
 import 'Privacy/components/notofiers.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  FourgreenApp.auth = FirebaseAuth.instance;
+  FourgreenApp.sharedPreferences = await SharedPreferences.getInstance();
+  FourgreenApp.firestore = Firestore.instance;
+
   runApp(MultiProvider(
    providers: [
     ChangeNotifierProvider<SingleNotifier>(create: (_) => SingleNotifier()),
@@ -35,7 +47,12 @@ class MyApp extends StatelessWidget {
         primaryColor: HexColor('#04855e'),
         scaffoldBackgroundColor: HexColor('#04855e'),
         ),
-      home: SplashScreen()
+      home: SplashScreen(),
+      routes: {
+        "/register": (_) => new RegisterScreen(),
+        "/login": (_) => new LoginScreen(),
+        "/logout": (_) => new WelcomeScreen(),
+        } ,
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:fourgreen/Homepage/components/communityscreen.dart';
 import 'package:fourgreen/Homepage/components/homescreen.dart';
 import 'package:fourgreen/Homepage/components/notificationscreen.dart';
 import 'package:fourgreen/Homepage/components/profilescreen.dart';
-import 'package:fourgreen/components/rounded_search_field.dart';
 
 class Home extends StatefulWidget {
  @override

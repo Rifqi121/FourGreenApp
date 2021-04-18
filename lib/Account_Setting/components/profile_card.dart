@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fourgreen/Login/login_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ProfileCard extends StatelessWidget {

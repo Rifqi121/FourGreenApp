@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Login/login_screen.dart';
+import 'package:fourgreen/Register/register_screen.dart';
 import 'package:fourgreen/components/rounded_button.dart';
 import 'package:fourgreen/welcome/components/background.dart';
 
@@ -34,7 +33,7 @@ class Body extends StatelessWidget {
             ),
             RoundedButton2(
               text: "REGISTER",
-              press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return LoginScreen();},),);},
+              press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return RegisterScreen();},),);},
             ),
           ],
         ),

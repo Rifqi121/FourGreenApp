@@ -4,13 +4,12 @@ import 'package:custom_switch/custom_switch.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fourgreen/Homepage/components/profilescreen.dart';
+import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/Homepage/homepage.dart';
-import 'package:fourgreen/Register/register_screen.dart';
+import 'package:fourgreen/components/errorDialog.dart';
 import 'package:fourgreen/components/rounded_button.dart';
 import 'package:fourgreen/components/rounded_input_field.dart';
 import 'package:fourgreen/components/rounded_password_field.dart';
-import 'package:fourgreen/components/toggle_switch.dart';
 import 'package:fourgreen/welcome/components/background.dart';
 
 class Login extends StatefulWidget{
@@ -19,6 +18,9 @@ class Login extends StatefulWidget{
 }
 class _LoginState extends State<Login> {
   String _email, _password;
+  final TextEditingController _emailTextEditingController = TextEditingController();
+  final TextEditingController _passwordTextEditingController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -49,12 +51,10 @@ class _LoginState extends State<Login> {
               // ToggleTab(),
               LoginRoundedButton(
                 text: "LOGIN",
-                press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return RegisterScreen();},),);},
-              ),
+                press: () {Navigator.pushReplacementNamed(context, "/login",);}),
               RegisRoundedButton(
                 text: "REGISTER",
-                press: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return RegisterScreen();},),);},
-              )
+                press: () {Navigator.pushReplacementNamed(context, "/register",);})
             ],
             ),
             Form(
@@ -63,20 +63,13 @@ class _LoginState extends State<Login> {
                 children: [
                   RoundedInputField(
                     hintText: "E-mail",
-                    onSaved: (input) => _email = input,
-                    validator: (input) {
-                      if(input.isEmpty) {
-                        return 'Masukan E-mail';
-                      }
-                    },
+                    controller: _emailTextEditingController,
                   ),
                   RoundedPasswordField(
-                    onSaved: (input) => _password = input,
-                    validator: (input) {
-                      if(input.isEmpty) {
-                        return 'Masukan password';
-                      }
-                    },
+                    hintText: "Password",
+                    controller: _passwordTextEditingController,
+                    maxlenght: 8,
+                    
                   ),
                   SizedBox(height: size.height * 0.02),
                   Row(
@@ -98,9 +91,17 @@ class _LoginState extends State<Login> {
                   Text("Create a New Account", 
                   style: TextStyle(color: Colors.redAccent),),
                   SizedBox(height: size.height * 0.05),
-                  RoundedButton(
-                    text: "Login",
-                    press: login,
+                  RaisedButton(
+                    onPressed: (){
+                      _emailTextEditingController.text.isNotEmpty && _passwordTextEditingController.text.isNotEmpty? login() : showDialog(
+                        context: context,
+                        builder: (c){
+                          return ErrorAlertDialog(message: "Tolong masukan Email dan Password",);
+                        }
+                        );
+                    },
+                    color: Colors.white,
+                    child: Text("Login"),
                   ),
                 ],
               ),
@@ -122,19 +123,55 @@ class _LoginState extends State<Login> {
     );
     
   }
-  Future <void> login() async {
-  final formState = _formKey.currentState;
-  if(formState.validate()){
-    formState.save();
-    try {
-      Future<AuthResult> user = (FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password));
-      user.then((userData) => {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(user: userData.user)))});
+  // Future <void> login() async {
+  // final formState = _formKey.currentState;
+  // Route route = MaterialPageRoute(builder: (c) => Homepage());
+  // if(formState.validate()){
+  //   formState.save();
+  //   try {
+  //     Future<AuthResult> user = (FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password));
+  //     user.then((userData) => {
+  //     Navigator.pushReplacement(context, route)});
       
-    } catch(e){
-      print(e.message);
+  //   } catch(e){
+  //     print(e.message);
+  //   }
+  // }
+  // }
+  
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  void login() async {
+    FirebaseUser firebaseUser;
+    await _auth.signInWithEmailAndPassword(
+      email: _emailTextEditingController.text, 
+      password: _passwordTextEditingController.text,
+    ).then((authUser){
+      firebaseUser = authUser.user;
+    }).catchError((error) {
+      Navigator.pop(context);
+      showDialog(
+        context: context,
+        builder: (c) {
+          return ErrorAlertDialog(message: error.message.toString(),);
+        }
+      );
+    });
+    if (firebaseUser != null ){
+      readData(firebaseUser).then((value) {
+        Navigator.pop(context);
+        Route route = MaterialPageRoute(builder: (c) => Homepage());
+        Navigator.pushReplacement(context, route);
+      });
     }
   }
+
+  Future readData(FirebaseUser user) async {
+    Firestore.instance.collection("users").document(user.uid).get().then((dataSnapshot) async {
+      await FourgreenApp.sharedPreferences.setString("uid", dataSnapshot.data[FourgreenApp.userUID]);
+      await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, dataSnapshot.data[FourgreenApp.userEmail]);
+      await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, dataSnapshot.data[FourgreenApp.userName]);
+      await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, dataSnapshot.data[FourgreenApp.userPhone]);
+    });
   }
 
 }

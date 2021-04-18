@@ -5,10 +5,12 @@ class RRoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final TextEditingController controller;
+  final ValueChanged<String> validator;
   final ValueChanged<String> onChanged;
   const RRoundedInputField({
     Key key,
     this.controller,
+    this.validator,
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
@@ -17,8 +19,9 @@ class RRoundedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RTextFieldContainer(
-      child: TextField(
+      child: TextFormField(
         controller: controller,
+        validator: validator,
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
@@ -35,9 +38,11 @@ class RoundedNumInputField extends StatelessWidget {
   final IconData icon;
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
+  final ValueChanged<String> validator;
   const RoundedNumInputField({
     Key key,
     this.controller,
+    this.validator,
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
@@ -46,9 +51,10 @@ class RoundedNumInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RTextFieldContainer(
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         onChanged: onChanged,
+        validator: validator,
         keyboardType: TextInputType.number,
         cursorColor: Colors.black,
         decoration: InputDecoration(

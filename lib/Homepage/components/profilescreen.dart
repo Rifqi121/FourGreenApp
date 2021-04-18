@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/components/profile_setting.dart';
 
 class ProfileScreen extends StatefulWidget{
@@ -36,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+
       child:Stack(
         children: <Widget>[
           Container(
@@ -55,7 +57,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: <Widget>[
             new Container(
               margin: EdgeInsets.only(right: 125,top: 10),
-              child: Text('', style: TextStyle(fontSize: 15, color: Colors.white),),
+              child: Text(
+                FourgreenApp.sharedPreferences.getString(FourgreenApp.userName), style: TextStyle(fontSize: 15, color: Colors.white),),
               ),
               RoundedText2(),
               new Container(

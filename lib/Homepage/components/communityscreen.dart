@@ -88,7 +88,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   ],
                   ),
                   GestureDetector(
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ClubFourgreen_layout();},),);},
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ClubFourgreenlayout();},),);},
                     child: Column(
                       children: <Widget>[
                       CommunityCard(
@@ -137,7 +137,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child:Card(
                     elevation: 5,
                     child: InkWell(
-                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ClubFourgreen_layout();},),);},
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return ClubFourgreenlayout();},),);},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
