@@ -14,7 +14,7 @@ class ShopCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.height*0.18,
-      margin: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(top: size.height*0.025),
       child: Card(
         elevation: 20,
         child: Stack(
@@ -26,21 +26,26 @@ class ShopCard extends StatelessWidget {
                   width: size.width*0.85,
                   height: size.height*0.07,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Icon(Icons.location_on),
+                      Container(
+                        child: Row(
+                          children: [
+                            Icon(Icons.location_on),
                       Text("Temukan di FOURGREEN Shop", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                      Padding(padding: EdgeInsets.only(left: size.width*0.15)),
+                          ],
+                        ),
+                      ),
                       Text("UBAH", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                     ],),
                 ),
                   Container(
+                    margin: EdgeInsets.only(top: size.height*0.01),
                     width: size.width*0.85,
-                    margin: EdgeInsets.only(top: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
                           Image.asset("assets/icon/bibit.png", height: size.height*0.05, width: size.width*0.08,),
@@ -49,7 +54,6 @@ class ShopCard extends StatelessWidget {
                         ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
                           Image.asset("assets/icon/nutrisi.png", height: size.height*0.05, width: size.width*0.08,),
@@ -58,7 +62,6 @@ class ShopCard extends StatelessWidget {
                         ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: size.width*0.08, right: size.width*0.08),
                           child: Column(
                           children: <Widget>[
                           Image.asset("assets/icon/plant.png", height: size.height*0.05, width: size.width*0.08,),

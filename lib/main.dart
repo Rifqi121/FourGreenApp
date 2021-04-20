@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Config/config.dart';
+import 'package:fourgreen/Fitur/NewsUpdate/addnews.dart';
 import 'package:fourgreen/Login/login_screen.dart';
 import 'package:fourgreen/Register/register_screen.dart';
 import 'package:fourgreen/welcome/splash_screen.dart';

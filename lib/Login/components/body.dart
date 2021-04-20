@@ -17,7 +17,6 @@ class Login extends StatefulWidget{
   _LoginState createState() => new _LoginState();
 }
 class _LoginState extends State<Login> {
-  String _email, _password;
   final TextEditingController _emailTextEditingController = TextEditingController();
   final TextEditingController _passwordTextEditingController = TextEditingController();
 
@@ -68,7 +67,7 @@ class _LoginState extends State<Login> {
                   RoundedPasswordField(
                     hintText: "Password",
                     controller: _passwordTextEditingController,
-                    maxlenght: 8,
+                    maxlenght: 10,
                     
                   ),
                   SizedBox(height: size.height * 0.02),

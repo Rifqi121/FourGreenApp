@@ -8,7 +8,7 @@ class FeedCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(top: size.height*0.025),
-      height: size.height*0.35,
+      height: size.height*0.37,
       width: size.width*0.9,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white,),
       child: Column(

@@ -15,10 +15,8 @@ class Pagination extends StatelessWidget {
       height: 30.0,
       margin: EdgeInsets.only(top: 10),
       child: Center(
-        child: TextField(
-          decoration: InputDecoration(
-            hintText: page,
-          ),
+        child: Text(
+          page,
         ),
       ),
     );

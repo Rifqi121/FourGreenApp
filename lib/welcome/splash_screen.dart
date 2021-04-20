@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Homepage/homepage.dart';
 import 'package:fourgreen/welcome/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   final Color backgroundColor = Colors.white;
@@ -12,7 +14,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   final splashDelay = 5;
 
   @override
@@ -27,8 +28,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Timer(_duration, navigationPage);
   }
 
-  void navigationPage() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => WelcomeScreen()));
+  void navigationPage() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var status = pref.getBool('isLoggedIn') ?? false;
+    print(status);
+    if (status) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+    } else {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => WelcomeScreen()));
+    }
+    
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Fitur/NewsUpdate/addnews.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/components/carousel_video.dart';
-// import 'package:newsupdate_fourgreen/components/fab_buat_berita.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/components/rounded_search_field.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/components/tips_and_trik_list_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -13,7 +13,6 @@ class NewsUpdate extends StatefulWidget {
 
 Icon iconc = new Icon(Icons.chat_bubble_outline_rounded);
 Icon icont = new Icon(Icons.shopping_cart_outlined);
-Icon iconb = new Icon(Icons.arrow_back);
 
 class _NewsUpdateState extends State<NewsUpdate> {
   List<Widget> containers = [
@@ -81,16 +80,6 @@ class _NewsUpdateState extends State<NewsUpdate> {
               },
             ),
           ],
-          leading: IconButton(
-            icon: iconb,
-            onPressed: () {
-              Fluttertoast.showToast(
-                msg: "Fungsi button ini belum ada :)",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
-              );
-            },
-          ),
         ),
         body: Container(
           child: Column(children: <Widget>[
@@ -117,13 +106,11 @@ class _NewsUpdateState extends State<NewsUpdate> {
             Container(
                 height: 250,
                 width: double.infinity,
-                
                 child: TabBarView(
                   children: containers,
                 ),
                 
               ),
-
             Card(
               elevation: 15,
               color: Colors.transparent,
@@ -156,7 +143,6 @@ class _NewsUpdateState extends State<NewsUpdate> {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10.0),
-                    child: VideoTerkini(),
                   ),
                 ],
               ),
@@ -164,13 +150,7 @@ class _NewsUpdateState extends State<NewsUpdate> {
           ]),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Fluttertoast.showToast(
-              msg: "Fungsi button ini belum ada :)",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-            );
-          },
+          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => FormTambahOpini()));},
           child: Icon(Icons.add),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
