@@ -20,10 +20,10 @@ class _NewsUpdateState extends State<NewsUpdate> {
       child: ListTipsTrik(),
     ),
     Container(
-      color: HexColor('#04855e'),
+      child: ListOpiniFarmers(),
     ),
     Container(
-      color: HexColor('#04855e'),
+      child: ListReviewHidroponik(),
     ),
   ];
 

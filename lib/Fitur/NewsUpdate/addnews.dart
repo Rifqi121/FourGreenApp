@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/newsupdate.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 Icon iconc = new Icon(Icons.chat_bubble_outline_rounded);
 Icon icont = new Icon(Icons.shopping_cart_outlined);
@@ -387,18 +388,20 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
   }
   DocumentSnapshot document;
   void tambahberita() async{
-    addNews(document).then((value) {
+    addNews().then((value) {
       Route route = MaterialPageRoute(builder: (c) => NewsUpdate());
       Navigator.pushReplacement(context, route);
     });
   }
 
-  Future addNews(DocumentSnapshot document) async{
-    Firestore.instance.collection("berita").document("Test").setData({
+  DateFormat formattedDate = DateFormat('dd-MM-yyyy');
+  Future addNews() async{
+    Firestore.instance.collection("berita").document().setData({
       "judul" :_judulTextEditingController.text.trim(),
-      "kategori" : _selectedItem,
+      "kategori" : _selectedItem.name,
       "img" : newsImage,
       "isiBerita" :_isiberitaTextEditingController.text.trim(),
+      "date": formattedDate.format(DateTime.now()).toString()
     });
 }
 }
