@@ -115,48 +115,51 @@ class NewsTipsTrik extends StatelessWidget {
               String judul = listNews[i].data["judul"].toString();
               String img = listNews[i].data["img"].toString();
               String date = listNews[i].data["date"].toString();
-              return Container(
-                padding: EdgeInsets.fromLTRB(0, 10.0, 0, 0),
-                margin: EdgeInsets.fromLTRB(2, 5, 2, 5),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: 60.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                            image: NetworkImage('$img'),
-                            fit: BoxFit.fill),
+              return InkWell(
+                onTap: (){},
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                  margin: EdgeInsets.fromLTRB(2, 5, 2, 5),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 60.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: NetworkImage('$img'),
+                              fit: BoxFit.fill),
+                        ),
                       ),
-                    ),
-                    Container(
-                      width: 270.0,
-                      height: 60.0,
-                      padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Tips & Trick",
-                            style:
-                                TextStyle(fontSize: 14.0, color: Colors.cyanAccent),
-                          ),
-                          Text(
-                            '$judul',
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "$date | FourGrenn Company",
-                            style: TextStyle(fontSize: 10.0, color: Colors.grey),
-                          ),
-                        ],
+                      Container(
+                        width: 270.0,
+                        height: 60.0,
+                        padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Tips & Trick",
+                              style:
+                                  TextStyle(fontSize: 14.0, color: Colors.cyanAccent),
+                            ),
+                            Text(
+                              '$judul',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 14.0, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "$date | FourGrenn Company",
+                              style: TextStyle(fontSize: 10.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
