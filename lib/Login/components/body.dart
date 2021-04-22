@@ -12,6 +12,7 @@ import 'package:fourgreen/components/rounded_input_field.dart';
 import 'package:fourgreen/components/rounded_password_field.dart';
 import 'package:fourgreen/welcome/components/background.dart';
 
+
 class Login extends StatefulWidget{
   @override
   _LoginState createState() => new _LoginState();
@@ -19,6 +20,7 @@ class Login extends StatefulWidget{
 class _LoginState extends State<Login> {
   final TextEditingController _emailTextEditingController = TextEditingController();
   final TextEditingController _passwordTextEditingController = TextEditingController();
+
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -155,6 +157,8 @@ class _LoginState extends State<Login> {
         }
       );
     });
+
+
     if (firebaseUser != null ){
       readData(firebaseUser).then((value) {
         Navigator.pop(context);

@@ -6,6 +6,7 @@ import 'package:fourgreen/FourgreenForum/fourgreenforum.dart';
 import 'package:fourgreen/components/community_card.dart';
 import 'package:fourgreen/components/rounded_search_field.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 
 
 class CommunityScreen extends StatefulWidget{
@@ -61,7 +62,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
          RoundedSearchField(),
          IconButton(icon: icont, onPressed: (){
          }),
-         IconButton(icon: iconc, onPressed: (){
+         IconButton(icon: iconc, onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return HomeChat();},),);
          })
        ],
      ),

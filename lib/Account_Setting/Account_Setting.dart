@@ -12,7 +12,7 @@ class AccountSettingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF04855e),
-        title: Text("PENGATURAN AKUN"),
+        title: Text("EDIT PROFILE"),
       ),
       backgroundColor: HexColor("#257a60"),
       body: SingleChildScrollView(

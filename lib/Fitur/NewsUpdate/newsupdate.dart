@@ -20,10 +20,10 @@ class _NewsUpdateState extends State<NewsUpdate> {
       child: ListTipsTrik(),
     ),
     Container(
-      color: HexColor('#04855e'),
+      child: ListOpiniFarmers(),
     ),
     Container(
-      color: HexColor('#04855e'),
+      child: ListReviewHidroponik(),
     ),
   ];
 
@@ -104,13 +104,13 @@ class _NewsUpdateState extends State<NewsUpdate> {
               child: TabBar(tabs: myTabs),
             ),
             Container(
-                height: 250,
-                width: double.infinity,
-                child: TabBarView(
-                  children: containers,
-                ),
-                
+              height: 250,
+              width: double.infinity,
+              child: TabBarView(
+                children: containers,
               ),
+
+            ),
             Card(
               elevation: 15,
               color: Colors.transparent,

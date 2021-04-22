@@ -9,6 +9,7 @@ import 'package:fourgreen/components/menu_card.dart';
 import 'package:fourgreen/components/rounded_search_field.dart';
 import 'package:fourgreen/components/shop_card.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 
 class HomeScreen extends StatelessWidget{
 
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget{
          RoundedSearchField(),
          IconButton(icon: Icon(Icons.shopping_cart_outlined), onPressed: (){
          }),
-         IconButton(icon: Icon(Icons.chat_bubble_outline_rounded), onPressed: (){
+         IconButton(icon: Icon(Icons.chat_bubble_outline_rounded), onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return HomeChat();},),);
          })
        ],
      ),

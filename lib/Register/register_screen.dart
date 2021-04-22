@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Config/config.dart';
+import 'package:fourgreen/Homepage/components/bottom_nav.dart';
 import 'package:fourgreen/Register/components/body.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatelessWidget{
   @override
@@ -12,3 +15,4 @@ class RegisterScreen extends StatelessWidget{
       );
   }
 }
+

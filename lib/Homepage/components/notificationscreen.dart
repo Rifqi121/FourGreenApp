@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 
 
 class NotificationScreen extends StatefulWidget {
@@ -42,8 +43,11 @@ class _NotifikasiState extends State<NotificationScreen> {
               ),
               IconButton(
                 icon: Icon(Icons.chat_bubble_outline_outlined),
-                onPressed: null,
-              )
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return HomeChat();
+                  },),);
+                })
             ],
             leading: IconButton(
               icon: Icon(Icons.arrow_back),

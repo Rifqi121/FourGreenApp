@@ -8,6 +8,7 @@ import 'package:fourgreen/components/rounded_button.dart';
 import 'package:fourgreen/components/rounded_password_field.dart';
 import 'package:fourgreen/components/rounded_register_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fourgreen/Services/database.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _RegisterState extends State<Register> {
   final TextEditingController _passwordTextEditingController = TextEditingController();
   final TextEditingController _phoneTextEditingController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  DatabaseMethods databaseMethods = new DatabaseMethods();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -160,6 +161,13 @@ class _RegisterState extends State<Register> {
         }
         );
     });
+
+    Map<String, String> userInfoMap = {
+      "name" : _nameTextEditingController.text,
+      "email" : _emailTextEditingController.text
+    };
+
+
 
     if(firebaseUser != null){
       saveUserIntoFireStore(firebaseUser).then((value) {

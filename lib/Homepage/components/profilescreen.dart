@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/components/profile_setting.dart';
+import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 
 class ProfileScreen extends StatefulWidget{
   @override
@@ -32,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: IconButton(icon: new Icon(Icons.settings, size: 30,), onPressed: null),
               ),
               new IconButton(icon: new Icon(Icons.shopping_cart, size: 30,), onPressed: null),
-              new IconButton(icon: new Icon(Icons.mark_chat_unread_outlined, size: 30,), onPressed: null)
+              new IconButton(icon: new Icon(Icons.mark_chat_unread_outlined, size: 30,), onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return HomeChat();},),);})
         ],
       ),
       backgroundColor: Colors.white,
