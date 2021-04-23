@@ -19,6 +19,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
   bool _value = false;
   File file;
   String newsImage = "";
+  String url = "https://firebasestorage.googleapis.com/v0/b/fourgreenapp.appspot.com/o/white.jpg?alt=media&token=f4363e37-56d3-4785-b8ec-d3e411975b8e";
 
   List<ListItem> _dropdownItems = [
     ListItem(1, "Tips and Trick"),
@@ -61,7 +62,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
     return Scaffold(
       appBar: new AppBar(
         backgroundColor: Color(0xFF04855e),
-        title: Text('OPINI FARMERS'),
+        title: Text('FOURGREEN NEWS'),
         actions: [
           IconButton(
             icon: iconc,
@@ -177,7 +178,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
-                          image: file==null ? NetworkImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAACsCAMAAADhRvHiAAAASFBMVEX////7+/v5+fn19fXz8/Pu7u7///3//v/q6ur28cH7+fnm5d/x7+qurq77/vze4+jy6u30+Pv29vD7/u3S0dT49937+OT89udH/3/tAAADIElEQVR4nO3d6XbaMBCGYWSD6ZKmTdf7v9MuSQ8hxrZkZqRP0vvkT05oYSzNjLyAORz6Nb0/rz4eMsWhaLj8Ov35QXYTox4jfFh4YFj4u4jhndETxXWpjw9GL5fZ+Cnnq73UXIWNv8KQO6M7Q7qRXVh1Szf2y82eaRnNowCaUUOnS9LcBgFIo9kE7o1K8/hdZ6x1InkhF9A/mlEBwCqj1qW5kM7RqaUVm56N/CVtrI0NDGl45PJphPFz4jDVspgYS70Yf7R76ahiLFuxDfSLfBgsoDCKMNmX0gH0rp6cLbqT6DJMvK/C3LGefDbjvcmdHp3lEPa3gDA7eNQ+N1GoMJ9mo3L+Ov9XOl2jUCTzUxFTciQnm1AW6UzSK9FB3VHqDYheQwKrjaZ5+maeKcnyj1Br3EjHXMNGIJWwJSz8jjXsYmKG8kFHOmyB3PoCADLocH0R4LUT2+Jsmo9Vm0cQqlulGhcumCMDwfuyekEkCPpE5jtqcXcVM+Z373suyrTsoZCj2A+TY5F794/t53eJoO93IM5U/g4L+XuXonb6BZIcYdp/0B8ABcHwvgQ9ubnIO6ecyckkygJ4Y4iuioZP6G47SR6EdD0lyIPTklgQv3jktZaykiHrBUXVV0EvcYAk1aWw4aHA/6caGmy3DW6SpTvTvrqqeSZ5GK2og+rpYBNXcf0hTe/5AmAHdjrEVLrzCnijNJCgaLoUe/HuF3STQ6F7nkSwTTmH1OIpWgen8/rDmcLYZ22KL5FnyP2cDU6wlBUxTAAUqfUmdpXeEDpgEQoFALBm4g6wMaZvpSPwY/Wh+eFvJpFNW57cbkjJTVo8ME5RDI/KGPEsFlt17+N/ncoPhaJ4pfx1jVtfD3P9p82FP89pm93fdWyT9IkbWex0yZ7JKNcWemtIDd6UTPXDvGW1N895nO78dEPpBTVPMUyH9bdLgGtJO1XSzSu/naWoVoumhu0ioW+7Hhe+zRRXKJuCGPzujG7XAXMmk/vFzO9NXC49//jZxHY4e/zlN0o17u8s7KQtDJL5Fra5KrW5VUC6YwP3wPGtZ4frDzQgQ78B6kUDv1U/ysYAAAAASUVORK5CYII=") : FileImage(file) ,
+                          image: file==null ? NetworkImage(url) : FileImage(file) ,
                         fit: BoxFit.cover,
                         )
 
@@ -306,6 +307,8 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
               color: Colors.white,
               child: RaisedButton(
                 onPressed: uploadImage,
+                color: Colors.white,
+                elevation: 0,
                 child: Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -313,7 +316,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                     color: Color(0xFF04855e),
                   ),
                   child: Text(
-                    'SIMPAN OPINI',
+                    'SIMPAN BERITA',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

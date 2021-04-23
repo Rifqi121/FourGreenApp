@@ -50,6 +50,7 @@ class _NewsUpdateState extends State<NewsUpdate> {
   ];
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
@@ -81,7 +82,7 @@ class _NewsUpdateState extends State<NewsUpdate> {
             ),
           ],
         ),
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(children: <Widget>[
             Container(
               height: 50,
@@ -104,21 +105,16 @@ class _NewsUpdateState extends State<NewsUpdate> {
               child: TabBar(tabs: myTabs),
             ),
             Container(
-                height: 250,
+                height: size.height*0.35,
                 width: double.infinity,
                 child: TabBarView(
                   children: containers,
                 ),
                 
               ),
-            Card(
-              elevation: 15,
-              color: Colors.transparent,
-              child: Container(
-                height: 10,
-              ),
-            ),
+
             Container(
+              margin: EdgeInsets.only(top: size.height*0.02),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -133,9 +129,9 @@ class _NewsUpdateState extends State<NewsUpdate> {
                       Container(
                         margin: EdgeInsets.only(right: 10),
                         child: Text(
-                          "Video Terkini",
+                          "Selengkapnya",
                           style: TextStyle(
-                              color: Colors.cyanAccent,
+                              color: HexColor("#40c1a2"),
                               fontWeight: FontWeight.bold),
                         ),
                       ),

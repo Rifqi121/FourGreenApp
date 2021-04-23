@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fourgreen/Fitur/3R/3R.dart';
 import 'package:fourgreen/Fitur/Borangan/Borangan.dart';
+import 'package:fourgreen/Fitur/Fourgreen_Shop/detailproduct.dart';
 import 'package:fourgreen/Fitur/Hamtam/Hamtam.dart';
 import 'package:fourgreen/Fitur/Hidroponik/Hidroponik.dart';
+import 'package:fourgreen/Fitur/List_Produk/listproduk.dart';
 import 'package:fourgreen/Fitur/Taripo/Taripo.dart';
 import 'package:fourgreen/components/carousel.dart';
 import 'package:fourgreen/components/menu_card.dart';
@@ -116,7 +118,7 @@ class HomeScreen extends StatelessWidget{
                   Container(
                     margin: EdgeInsets.only(right: 15),
                   child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {return ListProduk();}));},
                   child: new Text("Lihat Semua >", style: TextStyle(fontSize: 12, color: HexColor('#11b18b'))),
                   ),),
                   ]

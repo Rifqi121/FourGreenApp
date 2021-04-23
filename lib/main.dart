@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/addnews.dart';
+import 'package:fourgreen/Fitur/NewsUpdate/readNews.dart';
 import 'package:fourgreen/Login/login_screen.dart';
 import 'package:fourgreen/Register/register_screen.dart';
 import 'package:fourgreen/welcome/splash_screen.dart';
