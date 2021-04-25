@@ -122,8 +122,8 @@ class RoundedText3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 340.0,
-      height: 150.0,
-      margin: EdgeInsets.only(top: 20),
+      height: 130.0,
+      margin: EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -140,7 +140,7 @@ class RoundedText3 extends StatelessWidget {
         child: FlatButton(
           onPressed: null,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               new Container(
                 child: Row(
@@ -179,7 +179,7 @@ class RoundedText3 extends StatelessWidget {
                 ),
               ),
               new Container(
-                margin: EdgeInsets.only(bottom: 20),
+                margin: EdgeInsets.only(bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -215,7 +215,7 @@ class RoundedText4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 340.0,
-      height: 140.0,
+      height: 130.0,
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.symmetric(vertical:10),
       decoration: BoxDecoration(
@@ -368,7 +368,7 @@ class RoundedImg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 90.0,
-      height: 100.0,
+      height: 90.0,
       margin: EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -498,7 +498,7 @@ class RoundedImg3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 90.0,
-      height: 100.0,
+      height: 90.0,
       margin: EdgeInsets.only(top: 10, left: 15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
