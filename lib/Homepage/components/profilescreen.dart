@@ -63,7 +63,7 @@ class ProfileScreenData extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-            itemCount: listdata == null ? 0 : listdata.length,
+            itemCount: 1,
             itemBuilder: (context, i) {
               String name = listdata[i].data["name"].toString();
               String foto = listdata[i].data["foto"].toString();

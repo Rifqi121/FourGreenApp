@@ -82,7 +82,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   Column(
                     children: <Widget>[
                     CommunityCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                    icon: Image.asset("assets/icon/hidroponik.png"),
                     ),
                     Text("HIDROPONIK", style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold))
                   ],
@@ -92,7 +92,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Column(
                       children: <Widget>[
                       CommunityCard(
-                      icon: Image.asset("assets/icon/logo4green.png"),
+                      icon: Image.asset("assets/icon/club.png"),
                       ),
                       Text("KLUB", style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
                     ],
@@ -103,7 +103,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Column(
                       children: <Widget>[
                       CommunityCard(
-                      icon: Image.asset("assets/icon/logo4green.png"),
+                      icon: Image.asset("assets/icon/forum.png"),
                       ),
                       Text("FORUM", style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold))
                     ],

@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget{
                     child: Column(
                       children: <Widget>[
                         MenuCard(
-                        icon: Image.asset("assets/icon/logo4green.png"),
+                        icon: Image.asset("assets/icon/hidro.png"),
                         ),
                         Text("Hidroponik", style: TextStyle(fontSize: 12, color: Colors.white)),
                       ],
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget{
                     child: Column(
                     children: <Widget>[
                     MenuCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                    icon: Image.asset("assets/icon/hamtam.png"),
                     ),
                     Text("Hamtam", style: TextStyle(fontSize: 12, color: Colors.white))
                   ],
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget{
                     child: Column(
                     children: <Widget>[
                     MenuCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                    icon: Image.asset("assets/icon/taripo.png"),
                     ),
                     Text("Taripo", style: TextStyle(fontSize: 12, color: Colors.white))
                   ],
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget{
                     child: Column(
                     children: <Widget>[
                     MenuCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                    icon: Image.asset("assets/icon/borangan.png"),
                     ),
                     Text("Borangan", style: TextStyle(fontSize: 12, color: Colors.white))
                   ],
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget{
                     child: Column(
                     children: <Widget>[
                     MenuCard(
-                    icon: Image.asset("assets/icon/logo4green.png"),
+                    icon: Image.asset("assets/icon/3r.png"),
                     ),
                     Text("3R", style: TextStyle(fontSize: 12, color: Colors.white))
                   ],
