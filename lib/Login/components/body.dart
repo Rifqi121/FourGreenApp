@@ -167,6 +167,7 @@ class _LoginState extends State<Login> {
   Future readData(FirebaseUser user) async {
     Firestore.instance.collection("users").document(user.uid).get().then((dataSnapshot) async {
       await FourgreenApp.sharedPreferences.setString("uid", dataSnapshot.data[FourgreenApp.userUID]);
+      await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPass, dataSnapshot.data[FourgreenApp.userPass]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, dataSnapshot.data[FourgreenApp.userEmail]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, dataSnapshot.data[FourgreenApp.userName]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, dataSnapshot.data[FourgreenApp.userPhone]);

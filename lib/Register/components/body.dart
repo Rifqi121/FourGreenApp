@@ -146,20 +146,21 @@ class _RegisterState extends State<Register> {
     FirebaseUser firebaseUser;
     final formState = _formKey.currentState;
     if(formState.validate()){
-    formState.save();
-    await _auth.createUserWithEmailAndPassword(
-      email: _emailTextEditingController.text.trim(), 
-      password: _passwordTextEditingController.text.trim()).then((auth) {
-      firebaseUser = auth.user;}).catchError((error){
-      Navigator.pop(context);
-      showDialog(
-        context: context,
-        builder:  (c)
-        {
-          return ErrorAlertDialog(message: "Silahkan masukan data dengan benar");
+      formState.save();
+      await _auth.createUserWithEmailAndPassword(
+        email: _emailTextEditingController.text.trim(), 
+        password: _passwordTextEditingController.text.trim()).then((auth) {
+          firebaseUser = auth.user;}).catchError((error){
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder:  (c)
+            {
+              return ErrorAlertDialog(message: "Silahkan masukan data dengan benar");
+            }
+          );
         }
-        );
-    });
+      );
 
     if(firebaseUser != null){
       saveUserIntoFireStore(firebaseUser).then((value) {
@@ -182,6 +183,7 @@ class _RegisterState extends State<Register> {
 
   await FourgreenApp.sharedPreferences.setString("uid", user.uid);
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, user.email);
+  await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPass, _passwordTextEditingController.text.trim());
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, _nameTextEditingController.text.trim());
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, _phoneTextEditingController.text.trim());
 

@@ -16,6 +16,7 @@ class FourgreenApp {
   static String collectionOrders = "orders";
 
   static final String userName = 'name';
+  static final String userPass = 'password';
   static final String userEmail = 'email';
   static final String userUID = 'uid';
   static final String userPhone = 'phone';

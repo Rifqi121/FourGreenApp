@@ -122,7 +122,7 @@ class RoundedText3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 340.0,
-      height: 212.0,
+      height: 150.0,
       margin: EdgeInsets.only(top: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -140,6 +140,7 @@ class RoundedText3 extends StatelessWidget {
         child: FlatButton(
           onPressed: null,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               new Container(
                 child: Row(
@@ -149,7 +150,7 @@ class RoundedText3 extends StatelessWidget {
                     SizedBox(width: 20,),
                     new Text("Pesanan Saya"),
                     SizedBox(width: 113,),
-                    new IconButton(icon: Icon(Icons.arrow_right), onPressed: null)
+                    Icon(Icons.arrow_right)
                   ],
                 ),
               ),
@@ -161,7 +162,7 @@ class RoundedText3 extends StatelessWidget {
                     SizedBox(width: 20,),
                     new Text("IOT"),
                     SizedBox(width: 180,),
-                    new IconButton(icon: Icon(Icons.arrow_right), onPressed: null)
+                    Icon(Icons.arrow_right)
                   ],
                 ),
               ),
@@ -173,7 +174,7 @@ class RoundedText3 extends StatelessWidget {
                     SizedBox(width: 20,),
                     new Text("Pembayaran"),
                     SizedBox(width: 128,),
-                    new IconButton(icon: Icon(Icons.arrow_right), onPressed: null)
+                    Icon(Icons.arrow_right)
                   ],
                 ),
               ),
@@ -186,7 +187,7 @@ class RoundedText3 extends StatelessWidget {
                     SizedBox(width: 20,),
                     new Text("Riwayat Transaksi"),
                     SizedBox(width: 93,),
-                    new IconButton(icon: Icon(Icons.arrow_right), onPressed: null)
+                    Icon(Icons.arrow_right)
                   ],
                 ),
               )
@@ -260,7 +261,7 @@ class RoundedText4 extends StatelessWidget {
                   ],
                 ),
               ),
-              GestureDetector(
+              InkWell(
                   onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return AccountSettingScreen();},),);},
                   child: Container(
                     child: Row(

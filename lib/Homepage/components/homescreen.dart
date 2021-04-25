@@ -4,6 +4,7 @@ import 'package:fourgreen/Fitur/Borangan/Borangan.dart';
 import 'package:fourgreen/Fitur/Fourgreen_Shop/detailproduct.dart';
 import 'package:fourgreen/Fitur/Hamtam/Hamtam.dart';
 import 'package:fourgreen/Fitur/Hidroponik/Hidroponik.dart';
+import 'package:fourgreen/Fitur/HomeChat/HomeChat.dart';
 import 'package:fourgreen/Fitur/List_Produk/listproduk.dart';
 import 'package:fourgreen/Fitur/Taripo/Taripo.dart';
 import 'package:fourgreen/components/carousel.dart';
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget{
          RoundedSearchField(),
          IconButton(icon: Icon(Icons.shopping_cart_outlined), onPressed: (){
          }),
-         IconButton(icon: Icon(Icons.chat_bubble_outline_rounded), onPressed: (){
+         IconButton(icon: Icon(Icons.chat_bubble_outline_rounded), onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return HomeChat();},),);
          })
        ],
      ),

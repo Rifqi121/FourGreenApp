@@ -60,6 +60,7 @@ class _ListProdukState extends State<ListProduk> {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           actions: <Widget>[
             RoundedSearchField(

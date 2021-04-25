@@ -6,19 +6,18 @@ import 'package:flutter/widgets.dart';
 import 'package:fourgreen/Config/config.dart';
 import 'package:fourgreen/components/profile_setting.dart';
 
-class ProfileScreen extends StatefulWidget{
+class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF04855e),
         elevation: 0,
-        automaticallyImplyLeading: false,
         centerTitle: false,
         titleSpacing: -10,
         title:
@@ -37,8 +36,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+      child: Container(
+        child: StreamBuilder(
+          stream: Firestore.instance.collection("users").where("uid" , isEqualTo: FourgreenApp.sharedPreferences.getString(FourgreenApp.userUID)).snapshots(),
+          builder: (context, snapshot) {
+            if(!snapshot.hasData){
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+              }else {
+              return ProfileScreenData(listdata: snapshot.data.documents);
+              }
+          }
+        ),
+      ),
+    )
+    );
+  }
+}
 
-      child:Stack(
+class ProfileScreenData extends StatelessWidget {
+  final List<DocumentSnapshot> listdata;
+
+  const ProfileScreenData({Key key, this.listdata}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+            itemCount: listdata == null ? 0 : listdata.length,
+            itemBuilder: (context, i) {
+              String name = listdata[i].data["name"].toString();
+              String foto = listdata[i].data["foto"].toString();
+      return Stack(
         children: <Widget>[
           Container(
             height: 160,
@@ -50,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             margin: EdgeInsets.only( left:10),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: DecorationImage(image: AssetImage('assets/images/yatia.jpg'), fit: BoxFit.cover,)
+              image: DecorationImage(image: NetworkImage('$foto'), fit: BoxFit.cover,)
             ),
           ),
           new Column(
@@ -58,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             new Container(
               margin: EdgeInsets.only(right: 125,top: 10),
               child: Text(
-                FourgreenApp.sharedPreferences.getString(FourgreenApp.userName), style: TextStyle(fontSize: 15, color: Colors.white),),
+                "$name", style: TextStyle(fontSize: 15, color: Colors.white),),
               ),
               RoundedText2(),
               new Container(
@@ -83,9 +112,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           )
         ],
-      ),
-      
-      ),
+      );
+      }
     );
-  }
+}
 }
