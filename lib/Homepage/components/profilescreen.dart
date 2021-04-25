@@ -67,51 +67,53 @@ class ProfileScreenData extends StatelessWidget {
             itemBuilder: (context, i) {
               String name = listdata[i].data["name"].toString();
               String foto = listdata[i].data["foto"].toString();
-      return Stack(
-        children: <Widget>[
-          Container(
-            height: 160,
-            color: Color(0xFF04855e),
-          ),
-          new Container(
-            height: 100,
-            width: 70,
-            margin: EdgeInsets.only( left:10),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(image: NetworkImage('$foto'), fit: BoxFit.cover,)
+      return SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 160,
+              color: Color(0xFF04855e),
             ),
-          ),
-          new Column(
-            children: <Widget>[
             new Container(
-              margin: EdgeInsets.only(right: 125,top: 10),
-              child: Text(
-                "$name", style: TextStyle(fontSize: 15, color: Colors.white),),
+              height: 100,
+              width: 70,
+              margin: EdgeInsets.only( left:10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(image: NetworkImage('$foto'), fit: BoxFit.cover,)
               ),
-              RoundedText2(),
+            ),
+            new Column(
+              children: <Widget>[
               new Container(
-                margin: EdgeInsets.only(bottom: 20, right: 80),
-                child: Text("PENGIKUT 100 | MENGIKUTI 20", style: TextStyle(color: Colors.white, fontSize: 10),),
-              ),
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RoundedImg(),
-                  RoundedImg2(),
-                  RoundedImg3()
-                ],
-              ),
-              new Column(
-                children: <Widget>[
-                  RoundedText3(),
-                  RoundedText4(),
-                  RoundedTextLogout(),
-                ],
-              )
-            ],
-          )
-        ],
+                margin: EdgeInsets.only(right: 125,top: 10),
+                child: Text(
+                  "$name", style: TextStyle(fontSize: 15, color: Colors.white),),
+                ),
+                RoundedText2(),
+                new Container(
+                  margin: EdgeInsets.only(bottom: 20, right: 80),
+                  child: Text("PENGIKUT 100 | MENGIKUTI 20", style: TextStyle(color: Colors.white, fontSize: 10),),
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RoundedImg(),
+                    RoundedImg2(),
+                    RoundedImg3()
+                  ],
+                ),
+                new Column(
+                  children: <Widget>[
+                    RoundedText3(),
+                    RoundedText4(),
+                    RoundedTextLogout(),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       );
       }
     );
