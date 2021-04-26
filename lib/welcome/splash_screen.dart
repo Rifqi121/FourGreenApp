@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() async{
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => WelcomeScreen()));
   }
 
   @override

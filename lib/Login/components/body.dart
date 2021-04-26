@@ -122,21 +122,6 @@ class _LoginState extends State<Login> {
     );
     
   }
-  // Future <void> login() async {
-  // final formState = _formKey.currentState;
-  // Route route = MaterialPageRoute(builder: (c) => Homepage());
-  // if(formState.validate()){
-  //   formState.save();
-  //   try {
-  //     Future<AuthResult> user = (FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password));
-  //     user.then((userData) => {
-  //     Navigator.pushReplacement(context, route)});
-      
-  //   } catch(e){
-  //     print(e.message);
-  //   }
-  // }
-  // }
   
   FirebaseAuth _auth = FirebaseAuth.instance;
   void login() async {
@@ -167,7 +152,6 @@ class _LoginState extends State<Login> {
   Future readData(FirebaseUser user) async {
     Firestore.instance.collection("users").document(user.uid).get().then((dataSnapshot) async {
       await FourgreenApp.sharedPreferences.setString("uid", dataSnapshot.data[FourgreenApp.userUID]);
-      await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPass, dataSnapshot.data[FourgreenApp.userPass]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, dataSnapshot.data[FourgreenApp.userEmail]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, dataSnapshot.data[FourgreenApp.userName]);
       await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, dataSnapshot.data[FourgreenApp.userPhone]);
@@ -201,10 +185,6 @@ class _ButtonSwitchState extends State<ButtonSwitch> {
               },
             ),
             SizedBox(height: 0.1,),
-            // Text('Value : $status', style: TextStyle(
-            //   color: Colors.white,
-            //   fontSize: 20.0
-            // ),)
           ],
         ),
     );

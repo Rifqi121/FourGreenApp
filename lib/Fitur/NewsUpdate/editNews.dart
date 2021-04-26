@@ -11,17 +11,23 @@ import 'package:intl/intl.dart';
 Icon iconc = new Icon(Icons.chat_bubble_outline_rounded);
 Icon icont = new Icon(Icons.shopping_cart_outlined);
 
-class FormTambahOpini extends StatefulWidget {
+class FormEditNews extends StatefulWidget {
+  final String judul;
+  final String img;
+  final String isiBerita;
+  final String date;
+
+  const FormEditNews({Key key, this.judul, this.img, this.isiBerita, this.date}) : super(key: key);
+
   @override
-  _FormTambahOpiniState createState() => _FormTambahOpiniState();
+  _FormEditNewsState createState() => _FormEditNewsState();
 }
 
-class _FormTambahOpiniState extends State<FormTambahOpini> {
+class _FormEditNewsState extends State<FormEditNews> {
   bool _value = false;
   File file;
   String newsImage = "";
-  String url = "https://firebasestorage.googleapis.com/v0/b/fourgreenapp.appspot.com/o/white.jpg?alt=media&token=f4363e37-56d3-4785-b8ec-d3e411975b8e";
-
+  
   List<ListItem> _dropdownItems = [
     ListItem(1, "Tips and Trick"),
     ListItem(2, "Opini Farmers"),
@@ -110,12 +116,8 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                           borderRadius: BorderRadius.circular(5.0),
                           color: Colors.white,
                         ),
-                        child: TextField(
-                          controller: _judulTextEditingController,
-                          decoration: InputDecoration(
-                            hintText: 'Masukan Text',
-                            border: InputBorder.none,
-                          ),
+                        child: buildTextField(
+                          _judulTextEditingController,
                         ),
                       ),
                     ),
@@ -179,7 +181,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
-                          image: file==null ? NetworkImage(url) : FileImage(file) ,
+                          image: file==null ? NetworkImage('${widget.img}') : FileImage(file) ,
                         fit: BoxFit.cover,
                         )
 
@@ -252,11 +254,8 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                           borderRadius: BorderRadius.circular(5.0),
                           color: Colors.white,
                         ),
-                        child: TextField(
-                          controller: _isiberitaTextEditingController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                          ),
+                        child: buildTextField(
+                          _isiberitaTextEditingController, 
                         ),
                       ),
                     ),
@@ -270,34 +269,6 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: SwitchListTile(
-                        value: _value,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _value = value;
-                          });
-                        },
-                        activeColor: Colors.white,
-                        activeTrackColor: Color(0xff129789),
-                        inactiveTrackColor: Colors.grey,
-                        title: Text(
-                          'By creating an Opini, you agree to our',
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                        subtitle: Text(
-                          'Terms of Service and Privacy Policy',
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.grey[700],
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -317,7 +288,7 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
                     color: Color(0xFF04855e),
                   ),
                   child: Text(
-                    'SIMPAN BERITA',
+                    'Edit BERITA',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -399,13 +370,12 @@ class _FormTambahOpiniState extends State<FormTambahOpini> {
 
   DateFormat formattedDate = DateFormat('dd-MM-yyyy');
   Future addNews() async{
-    Firestore.instance.collection("berita").document().setData({
+    Firestore.instance.collection("berita").document().updateData({
       "judul" :_judulTextEditingController.text.trim(),
       "kategori" : _selectedItem.name,
       "img" : newsImage,
       "isiBerita" :_isiberitaTextEditingController.text.trim(),
       "date": formattedDate.format(DateTime.now()).toString(),
-      "idPemosting": FourgreenApp.sharedPreferences.getString(FourgreenApp.userUID)
     });
 }
 }
@@ -417,3 +387,12 @@ class ListItem {
   ListItem(this.value, this.name);
 }
 
+
+buildTextField(TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: TextField(
+        controller: controller,
+      ),
+    );
+}

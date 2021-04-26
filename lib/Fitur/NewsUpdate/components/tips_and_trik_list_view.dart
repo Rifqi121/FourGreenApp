@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fourgreen/Config/config.dart';
+import 'package:fourgreen/Fitur/NewsUpdate/editNews.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/readNews.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart';
@@ -262,6 +264,125 @@ class NewsReviewHidroponik extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              );
+            },
+          );
+  }
+}
+
+class ListMyNews extends StatefulWidget {
+  @override
+  _ListMyNewsState createState() => _ListMyNewsState();
+}
+
+class _ListMyNewsState extends State<ListMyNews>{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: StreamBuilder(
+        stream: Firestore.instance.collection("berita").where("idPemosting" , isEqualTo: FourgreenApp.sharedPreferences.getString(FourgreenApp.userUID)).snapshots(),
+        builder: (context, snapshot) {
+          if(!snapshot.hasData){
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+            }else {
+            return ListDataMyNews(listNews: snapshot.data.documents);
+            }
+        }
+      ),
+    );
+  }
+}
+
+class ListDataMyNews extends StatelessWidget {
+  final List<DocumentSnapshot> listNews;
+
+  const ListDataMyNews({Key key, this.listNews}) : super(key: key);
+  @override
+  Widget build(BuildContext context){
+    return ListView.builder(
+      shrinkWrap: true,
+            itemCount: listNews == null ? 0 : listNews.length,
+            itemBuilder: (context, i) {
+              String judul = listNews[i].data["judul"].toString();
+              String img = listNews[i].data["img"].toString();
+              String date = listNews[i].data["date"].toString();
+              String isiBerita = listNews[i].data["isiBerita"].toString();
+              String kategori = listNews[i].data["kategori"].toString();
+              return InkWell(
+                onLongPress: () {
+                  { showDialog(
+                      context: context,
+                      builder: (a) {
+                       return SimpleDialog(
+                          title: Text("Pilih Foto"),
+                          children: [
+                            SimpleDialogOption(
+                              child: Text("EDIT"),
+                              onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (c) => FormEditNews(judul: judul, img: img, isiBerita: isiBerita)));},
+                              ),
+                            SimpleDialogOption(
+                              child: Text("DELETE"),
+                              onPressed: (){},
+                              ),
+                            SimpleDialogOption(
+                              child: Text("Batal"),
+                              onPressed: (){
+                              Navigator.pop(context);
+                              },
+                             )
+                            ],
+                          );
+                        }
+                      );
+                    }
+                },
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+                  margin: EdgeInsets.fromLTRB(2, 5, 2, 5),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 80.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: NetworkImage('$img'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      Container(
+                        width: 270.0,
+                        height: 60.0,
+                        padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "$kategori",
+                              style:
+                                  TextStyle(fontSize: 14.0, color: HexColor("#40c1a2")),
+                            ),
+                            Text(
+                              '$judul',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 14.0, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "$date",
+                              style: TextStyle(fontSize: 10.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

@@ -1,44 +1,56 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:better_player/better_player.dart';
-// import 'package:video_player/video_player.dart';
-// import 'chewie_video.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoTerkini extends StatelessWidget {
+class CarouselVideo extends StatefulWidget {
+  @override
+  _CarouselVideoState createState() => _CarouselVideoState();
+}
+
+class _CarouselVideoState extends State<CarouselVideo> {
+  DocumentReference linkRef;
+  List<String> videoID = [];
+  bool showItem = false;
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
+    return Container(
         height: 200,
-        aspectRatio: 16 / 9,
-        enableInfiniteScroll: true,
-      ),
-      items: [
-        Container(
-          margin: EdgeInsets.all(10.0),
-          // color: Colors.black,
-          child: BetterPlayer.network(
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            betterPlayerConfiguration: BetterPlayerConfiguration(
-              autoPlay: false,
-              looping: false,
-              aspectRatio: 1,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-        Container(
-            margin: EdgeInsets.all(10.0),
-            // color: Colors.blue,
-            child: BetterPlayer.network(
-                'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-                betterPlayerConfiguration: BetterPlayerConfiguration(
-                  autoPlay: false,
-                  looping: false,
-                  aspectRatio: 1,
-                  fit: BoxFit.contain,
-                ))),
-      ],
-    );
+        margin: EdgeInsets.symmetric(horizontal: 4),
+        child: showItem
+            ? ListView.builder(
+                itemCount: videoID.length,
+                itemBuilder: (context, index) => Container(
+                  margin: EdgeInsets.all(8),
+                  child: YoutubePlayer(
+                    controller: YoutubePlayerController(
+                        initialVideoId:
+                            YoutubePlayer.convertUrlToId(videoID[index]),
+                        flags: YoutubePlayerFlags(autoPlay: false)),
+                    showVideoProgressIndicator: true,
+                  ),
+                ),
+              )
+            : CircularProgressIndicator());
+  }
+
+  void initState() {
+    linkRef = Firestore.instance.collection('links').document('urls');
+    super.initState();
+    getData();
+    print(videoID);
+  }
+
+  getData() async {
+    await linkRef
+        .get()
+        .then((value) => value.data?.forEach((key, value) {
+              if (!videoID.contains(value)) {
+                videoID.add(value);
+              }
+            }))
+        .whenComplete(() => setState(() {
+              videoID.shuffle();
+              showItem = true;
+            }));
   }
 }

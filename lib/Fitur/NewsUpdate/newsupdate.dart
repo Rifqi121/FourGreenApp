@@ -4,6 +4,7 @@ import 'package:fourgreen/Fitur/NewsUpdate/components/carousel_video.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/components/rounded_search_field.dart';
 import 'package:fourgreen/Fitur/NewsUpdate/components/tips_and_trik_list_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fourgreen/Fitur/NewsUpdate/myNews.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class NewsUpdate extends StatefulWidget {
@@ -126,23 +127,26 @@ class _NewsUpdateState extends State<NewsUpdate> {
                             style: TextStyle(
                                 fontSize: 20.0, fontWeight: FontWeight.bold)),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        child: Text(
-                          "Selengkapnya",
-                          style: TextStyle(
-                              color: HexColor("#40c1a2"),
-                              fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) {return MyNews();}));},
+                        child: Container(
+                          margin: EdgeInsets.only(right: 10),
+                          child: Text(
+                            "Selengkapnya",
+                            style: TextStyle(
+                                color: HexColor("#40c1a2"),
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
-                  ),
                 ],
               ),
             ),
+            SingleChildScrollView(
+            child: CarouselVideo(),
+          ),
           ]),
         ),
         floatingActionButton: FloatingActionButton(

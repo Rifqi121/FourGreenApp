@@ -183,7 +183,6 @@ class _RegisterState extends State<Register> {
 
   await FourgreenApp.sharedPreferences.setString("uid", user.uid);
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userEmail, user.email);
-  await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPass, _passwordTextEditingController.text.trim());
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userName, _nameTextEditingController.text.trim());
   await FourgreenApp.sharedPreferences.setString(FourgreenApp.userPhone, _phoneTextEditingController.text.trim());
 
